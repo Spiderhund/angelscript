@@ -10,7 +10,27 @@ Please go to https://www.angelcode.com/angelscript for more information.
 
 ## Premake 5
 
-This fork of AngelScript has been made compatible with the Premake project generator. Pull this into your project as a git submodule and add any needed options from the list below to your generator CLI.
+This fork of AngelScript has been made compatible with the Premake project generator. The following covers how to set it up and link it into your own project.
+
+Pull this into your project as you see fit (git submodule, copy into project).
+
+Run the action `./premake5 as_init`. This will move the AngelScript project header files into a common namespace. That means that in your project, instead of including AngelScript headers like this:
+
+```
+#include "angelscript.h"
+#include "scriptstdstring.h"
+```
+
+You will instead be including them like so:
+
+```
+#include "angelscript/angelscript.h"
+#include "angelscript/addon/scriptstdstring.h"
+```
+
+You will need to run the `as_init` action every time your reinitialize the AngelScript submodule or if you pull in new changes to the AngelScript repository.
+
+Now add any needed options from the list below to your generator CLI.
 
 | Option                     | Description                                                                       |
 |----------------------------|-----------------------------------------------------------------------------------|
@@ -67,6 +87,15 @@ project "MyProject"
 	link_angelscript()
 ```
 
+It is worth noting that the AngelScript project expects you to have configurations including either "debug", "Debug", "release", or "Release" somewhere in their names. As well as platforms including 32, 64, or 86. Examples:
+
+```
+configurations { "Debug", "Release", "RuntimeDebug", "RuntimeRelease", "DebugEditor", "ReleaseEditor" }
+platforms { "win32", "win64", "x86", "x64" }
+```
+
+These configuration and platform patterns are used to properly compile AngelScript in debug and release mode, for either 32 or 64 bit systems.
+
 Generate or regenerate your project files and you should be good to go.
 
 ### Defines
@@ -95,3 +124,7 @@ These defines will possibly be set within your projects linking with AngelScript
 | `AS_ADDON_SCRIPT_STD_STRING` | The Script Standard String addon is available                                     |
 | `AS_ADDON_SERIALIZER`        | The Serializer addon is available                                                 |
 | `AS_ADDON_WEAK_REFERENCE`    | The Weak Reference addon is available                                             |
+
+### Todo
+
+Implement support for more platforms. Currently this project only supports Windows.
