@@ -48,7 +48,9 @@ project "AngelScript"
     language "C++"
     systemversion "latest"
 	cppdialect "C++17"
-	
+
+	targetname("angelscript");
+
     targetdir(ANGELSCRIPT_TARGET_DIR);
     objdir(ANGELSCRIPT_OBJ_DIR);
 
