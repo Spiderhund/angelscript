@@ -81,4 +81,8 @@ sdk/docs/manual/
 # Exclude AngelScript debug output files
 AS_DEBUG/
 
+include/
+**/*.vcxproj
+**/*.vcxproj.filters
+**/*.vcxproj.user
 
