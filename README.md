@@ -64,7 +64,7 @@ As an example, if you want to include the script builder and standard string add
 Now make sure to include the AngelScript project in your workspace, include it before any projects that need to link with AngelScript. Also, make sure to define these two variables before you include AngelScript:
 
 ```
-ANGELSCRIPT_TARGET_DIR = "%{!wks.location}/bin/angelscript"; -- This sets the path where the AngelScript static library will be built to
+ANGELSCRIPT_TARGET_DIR = "%{!wks.location}/bin/angelscript"; -- This sets the path where the AngelScript library will be built to
 ANGELSCRIPT_OBJ_DIR = "%{!wks.location}/obj/angelscript";    -- This sets the path where the intermediate object files will be stored
 ```
 
