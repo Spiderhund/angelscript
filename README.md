@@ -58,7 +58,7 @@ Now add any needed options from the list below to your generator CLI.
 As an example, if you want to include the script builder and standard string addons, do the following:
 
 ```
-premake5 vs2022 --as_addon_script_builder --as_addon_script_std_string
+./premake5 vs2022 --as_addon_script_builder --as_addon_script_std_string
 ```
 
 Now make sure to include the AngelScript project in your workspace, include it before any projects that need to link with AngelScript. Also, make sure to define these two variables before you include AngelScript:
