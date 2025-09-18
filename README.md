@@ -12,25 +12,7 @@ Please go to https://www.angelcode.com/angelscript for more information.
 
 This fork of AngelScript has been made compatible with the Premake project generator. The following covers how to set it up and link it into your own project.
 
-Pull this into your project as you see fit (git submodule, copy into project).
-
-Run the action `./premake5 as_init`. This will move the AngelScript project header files into a common namespace. That means that in your project, instead of including AngelScript headers like this:
-
-```
-#include "angelscript.h"
-#include "scriptstdstring.h"
-```
-
-You will instead be including them like so:
-
-```
-#include "angelscript/angelscript.h"
-#include "angelscript/addon/scriptstdstring.h"
-```
-
-You will need to run the `as_init` action every time your reinitialize the AngelScript submodule or if you pull in new changes to the AngelScript repository.
-
-Now add any needed options from the list below to your generator CLI.
+Pull this into your project as you see fit (git submodule, copy into project). Add any needed options from the list below to your generator CLI.
 
 | Option                     | Description                                                                       |
 |----------------------------|-----------------------------------------------------------------------------------|
@@ -95,6 +77,22 @@ platforms { "win32", "win64", "x86", "x64" }
 ```
 
 These configuration and platform patterns are used to properly compile AngelScript in debug and release mode, for either 32 or 64 bit systems.
+
+Run the action `./premake5 as_init`. This will move the AngelScript project header files into a common namespace. That means that in your project, instead of including AngelScript headers like this:
+
+```
+#include "angelscript.h"
+#include "scriptstdstring.h"
+```
+
+You will instead be including them like so:
+
+```
+#include "angelscript/angelscript.h"
+#include "angelscript/addon/scriptstdstring.h"
+```
+
+You will need to run the `as_init` action every time your reinitialize the AngelScript submodule or if you pull in new changes to the AngelScript repository.
 
 Generate or regenerate your project files and you should be good to go.
 
